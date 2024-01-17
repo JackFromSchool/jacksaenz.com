@@ -1,0 +1,33 @@
+---
+import '@fontsource/poppins';
+---
+
+<div>
+   <nav>
+      <a href="/garden/">Garden</a>
+      <a href="/now">Now</a>
+      <a href="/about">About</a>
+   </nav>
+</div>
+
+<style lang="scss">
+   @use '../styles/_main-colors' as *;
+   
+   nav {
+      display: flex;
+      flex-flow: row;
+      flex-direction: row-reverse;
+      flex-basis: 20em;
+      margin-top: max(1rem, 3vh);
+      margin-right: 1rem;
+   }
+
+   a {
+      text-decoration: none;
+      font-family: 'poppins', sans-serif;
+      color: $accent;
+      margin-right: 2rem;
+   }
+</style>
+
+
