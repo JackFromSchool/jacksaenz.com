@@ -1,0 +1,16 @@
+.centered-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.inner-item {
+   width: min(60vw, 70rem);
+   margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+   .inner-item {
+      width:100%;
+   }
+}

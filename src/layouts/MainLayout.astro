@@ -1,0 +1,44 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/js.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Jack Saenz</title>
+	</head>
+   <body>
+      <div class="sidebar-content-container">
+         <div class="sidebar"></div>
+         <div>
+            <Navbar/>
+            <slot/>
+         </div>
+      </div>
+   </body>
+   <style lang="scss">
+      @use '../styles/_main-colors' as *;
+      
+      :root {
+         background-color: $base;
+         color: $text;
+      }
+
+      body {
+         margin: 0;
+      }
+      
+      .sidebar-content-container {
+         display: grid;
+         grid-template-columns: max(2vw, 1rem) auto;
+      }
+
+      .sidebar {
+         background-color: $accent;
+         height: max(100vh, 100%);
+      }
+   </style>
+</html>
