@@ -1,0 +1,24 @@
+@use './_main-colors' as *;
+
+.floating-div {
+   border-radius: 7.5px;
+   border: solid $accent 2px;
+   background: $base;
+   max-width: 25rem;
+   word-break: break-all;
+
+   p {
+      font-size: min(5vw, 1rem);
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: .3rem;
+      margin-right: .3rem;
+   }
+}
+
+.link-colors {
+   text-underline-offset: .5rem;
+   text-decoration-color: $primary;
+   text-decoration-thickness: 1px;
+   color: $accent;
+}

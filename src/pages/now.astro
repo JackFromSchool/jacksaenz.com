@@ -1,0 +1,57 @@
+---
+import '@fontsource/space-mono';
+import '@fontsource/poppins';
+import MainLayout from '../layouts/MainLayout.astro';
+import ExternalLink from '../components/ExternalLink';
+---
+
+<MainLayout>
+   <div class="centered-container">
+      <div class="inner-item">
+         <h1>Now</h1>
+         <p>An idea I gathered from <ExternalLink client:visible link="https://maggieappleton.com/now">Maggie Appleton</ExternalLink>'s blog, that I like quite a lot</p>
+         <p>This page will continue to grow and grow as I add more and more to it. Each entry is dated and displays a path of things I've been interested in</p>
+      </div>
+      <div class="inner-item">
+         <h2>March 11th, 2024</h2>
+         <p>
+            Currently working on revamping this blog! Although I did like the old design it wasn't very easy to navigate and made expanding the site way harder than I would've liked for it to be. Plus now I've been fully indoctrinated into the whole idea of <ExternalLink client:visible link="https://maggieappleton.com/garden-history">Digital Gardening</ExternalLink>, which I feel will fit my creative style a lot more than the typical process of running a blog. Beyond that I've recently accepted into ECE at University of Texas at Austin and am looking forward to joining classes next fall! 
+         </p>
+      </div>
+   </div>
+</MainLayout>
+
+<style lang="scss">
+   @use '../styles/_centered-classes' as *;
+   
+   h1 {
+      font-family: 'poppins', sans-serif;
+      font-size: max(8vw, 4rem);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 0;
+      padding-right: 4rem;
+   }
+
+   h2 {
+      font-family: 'poppins', sans-serif;
+      font-size: max(2vw, 1.8rem);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 0;
+      padding-right: 4rem;
+   }
+
+   p {
+      font-family: 'Space Mono', sans-serif;
+      font-size: max(1vw, 1rem);
+      max-width: 80rem;
+      margin-left: 1rem;
+      margin-right: 2rem;
+   }
+
+</style>

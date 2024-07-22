@@ -1,0 +1,46 @@
+---
+import '@fontsource/poppins';
+import '@fontsource/space-mono';
+const { title, type } = Astro.props;
+---
+
+<a href="/now">
+   <h1>{title}</h1>
+   <p>{type}</p>
+</a>
+
+<style lang="scss">
+   @use '../styles/_main-colors' as *;
+
+   h1 {
+      color: $primary;
+      font-family: 'poppins', sans-serif;
+      margin-left: .6rem;
+      margin-right: .6rem;
+      margin-top: .6rem;
+      margin-bottom: .2rem;
+   }
+
+   p {
+      color: $text;
+      font-family: 'Space Mono', sans-serif;
+      margin-left: .6rem;
+      margin-right: .6rem;
+      margin-bottom: .6rem;
+      margin-top: 0;
+   }
+
+   a {
+      text-decoration: none;
+      transition: background .2s ease-in-out;
+      border: solid;
+      border-radius: 2px;
+      border-color: $secondary;
+      border-radius: 15px;
+   }
+
+   a:hover {
+      background: #f3eee2;
+   }
+
+</style>
