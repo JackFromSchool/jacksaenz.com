@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-   const essays = await getCollection('essay');
+   const essays = await getCollection('media');
 
    return essays.map(entry => ({
       params: { slug: entry.slug }, props: { entry },
