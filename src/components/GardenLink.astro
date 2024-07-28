@@ -1,10 +1,10 @@
 ---
 import '@fontsource/poppins';
 import '@fontsource/space-mono';
-const { title, type } = Astro.props;
+const { title, type, href } = Astro.props;
 ---
 
-<a href="/now">
+<a href={href}>
    <h1>{title}</h1>
    <p>{type}</p>
 </a>

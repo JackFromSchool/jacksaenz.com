@@ -5,6 +5,7 @@ const thoughtCollection = defineCollection({
    schema: z.object({
       title: z.string(),
       brief: z.string(),
+      date: z.date(),
    })
 });
 
@@ -14,6 +15,7 @@ const mediaCollection = defineCollection({
       name: z.string(),
       type: z.enum(["music", "film", "literature", "art", "etc"]),
       brief: z.string().optional(),
+      date: z.date(),
    })
 });
 
@@ -22,6 +24,7 @@ const essayCollection = defineCollection({
    schema: z.object({
       title: z.string(),
       brief: z.string(),
+      date: z.date(),
    })
 });
 

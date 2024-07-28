@@ -4,9 +4,12 @@ import '@fontsource/poppins';
 
 <div>
    <nav>
-      <a href="/garden/">Garden</a>
-      <a href="/now">Now</a>
-      <a href="/about">About</a>
+      <a class="main-link" href="/">JS</a>
+      <div class="box">
+         <a class="sub-link" href="/garden/">Garden</a>
+         <a class="sub-link" href="/now">Now</a>
+         <a class="sub-link" href="/about">About</a>
+      </div>
    </nav>
 </div>
 
@@ -16,7 +19,8 @@ import '@fontsource/poppins';
    nav {
       display: flex;
       flex-flow: row;
-      flex-direction: row-reverse;
+      justify-content: space-between;
+      flex-direction: row;
       flex-basis: 20em;
       margin-top: max(1rem, 3vh);
       margin-right: 1rem;
@@ -26,7 +30,20 @@ import '@fontsource/poppins';
       text-decoration: none;
       font-family: 'poppins', sans-serif;
       color: $accent;
+   }
+
+   .main-link {
+      margin-left: 2rem;
+      font-size: 2rem;
+   }
+
+   .sub-link {
       margin-right: 2rem;
+   }
+   
+   .box {
+      display: flex;
+      align-items: center;
    }
 </style>
 

@@ -1,0 +1,72 @@
+---
+import '@fontsource/space-mono';
+import Navbar from '../components/Navbar.astro';
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/js.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Jack Saenz</title>
+	</head>
+   <body>
+      <Navbar/>
+      <div class="centering-div">
+         <div class="centered-div">
+            <h1 class="title">{title}</h1>
+            <hr color="#105705"/>
+            <slot/>
+         </div>
+      </div>
+   </body>
+   <style lang="scss" is:global>
+      @use '../styles/_main-colors' as *;
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      
+      :root {
+         background-color: $base;
+      }
+
+      body {
+         margin: 0;
+      }
+
+      p {
+         font-family: 'Space Mono', sans-serif;
+         text-align: justify;
+         text-indent: 1rem;
+         color: $text;
+         margin: 0;
+      }
+
+      hr {
+         margin-bottom: 2rem;
+      }
+
+      h1, h2, h3 {
+         font-family: 'poppins', sans-serif;
+         color: $accent;
+         margin-top: 1.5rem;
+         margin-bottom: .5rem;
+      }
+
+      .title {
+         font-size: 2.2rem;
+      }
+
+      .centering-div {
+         display: flex;
+         justify-content: center;
+      }
+
+      .centered-div {
+         max-width: 80ch;
+         margin-left: 1rem;
+         margin-right: 1rem;
+         margin-bottom: 5rem;
+      }
+   </style>
+</html>

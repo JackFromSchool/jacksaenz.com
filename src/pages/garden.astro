@@ -3,6 +3,12 @@ import '@fontsource/poppins';
 import '@fontsource/space-mono';
 import GardenLink from "../components/GardenLink.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+import { getCollection } from 'astro:content';
+
+const essays = await getCollection('essay');
+const media = await getCollection('media');
+const thought = await getCollection('thought');
 ---
 
 <MainLayout>
@@ -15,9 +21,18 @@ import MainLayout from "../layouts/MainLayout.astro";
       </div>
    </div>
    <div class="grid-container">
-      <GardenLink title="Praise for Games Without Text" type="Essay"/>
-      <GardenLink title="AI is Weird" type="Thought"/>
-      <GardenLink title="An Ethical AI" type="Thought"/>
+      <p class="subtitle">Things to come!</p>
+      <!--
+      {essays.map((item) => 
+         <GardenLink title={item.data.title} href={"essays/"+item.slug} type="Essay"/>
+      )}
+      {thought.map((item) => 
+         <GardenLink title={item.title} href={item.slug} type="Thought"/>
+      )}
+      {media.map((item) => 
+         <GardenLink title={item.title} href={item.slug} type="Media"/>
+      )}
+      -->
    </div>
 </MainLayout>
 

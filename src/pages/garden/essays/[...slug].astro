@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
 
 export async function getStaticPaths() {
    const essays = await getCollection('essay');
@@ -13,5 +14,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<h1>{entry.data.title}</h1>
+<ContentLayout title={entry.data.title}>
 <Content />
+</ContentLayout>
