@@ -21,16 +21,17 @@ const thought = await getCollection('thought');
       </div>
    </div>
    <div class="grid-container">
-      <p class="subtitle">Things to come!</p>
       <!--
       {essays.map((item) => 
          <GardenLink title={item.data.title} href={"essays/"+item.slug} type="Essay"/>
       )}
+      -->
       {thought.map((item) => 
-         <GardenLink title={item.title} href={item.slug} type="Thought"/>
+         <GardenLink title={item.data.title} href={"thoughts/"+item.slug} type="Thought"/>
       )}
+      <!--
       {media.map((item) => 
-         <GardenLink title={item.title} href={item.slug} type="Media"/>
+         <GardenLink title={item.data.title} href={item.slug} type="Media"/>
       )}
       -->
    </div>

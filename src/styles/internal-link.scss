@@ -1,0 +1,36 @@
+@use './_main-colors' as *;
+
+.floating-div-internal {
+   border-radius: 7.5px;
+   border: solid $accent 2px;
+   background: $base;
+   max-width: 25rem;
+   word-wrap: normal;
+
+   p {
+      font-size: min(5vw, 1rem);
+      margin-top: 0;
+      margin-bottom: 0.5;
+      margin-left: .5rem;
+      margin-right: .5rem;
+   }
+
+   h1 {
+      text-indent: 0;
+      text-align: left;
+      font-size: min(8vw, 1.5rem);
+      word-wrap: normal;
+      margin-top: 0.5rem;
+      margin-left: .5rem;
+      margin-right: .5rem;
+   }
+}
+
+.link-colors {
+   font-family: 'Space Mono', sans-serif;
+   text-underline-offset: .5rem;
+   text-decoration-color: $primary;
+   text-decoration-thickness: 1px;
+   color: $accent;
+}
+

@@ -1,0 +1,11 @@
+@use './_main-colors' as *;
+
+.quote-box {
+  color: $text;
+  font-family: 'Space Mono', sans-serif;
+  padding-left: 1rem;
+  border-left: solid;
+  border-color: $accent;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

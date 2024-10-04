@@ -1,17 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
 
-export async function getStaticPaths() {
-   const essays = await getCollection('thought');
-
-   return essays.map(entry => ({
-      params: { slug: entry.slug }, props: { entry },
-   }));
+const { slug } = Astro.params;
+if (slug === undefined) {
+   throw new Error("Slug is required");
 }
 
-const { entry } = Astro.props;
+const entry = await getEntry("thought", slug);
+
+if (entry === undefined) {
+   return Astro.redirect("/404");
+}
+
 const { Content } = await entry.render();
 ---
 
-<h1>{entry.data.title}</h1>
+<ContentLayout title={entry.data.title}>
 <Content />
+</ContentLayout>

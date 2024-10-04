@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useFloating, useHover, useInteractions } from '@floating-ui/react';
+import {flip} from '@floating-ui/dom';
 
-import '../styles/hovers.scss';
+import '../styles/external-link.scss';
 
 interface ExternalLinkProps {
    link: string;
@@ -15,7 +16,8 @@ export default function ExternalLink(props: ExternalLinkProps) {
    const { refs, floatingStyles, context } = useFloating({
       open: isOpen,
       onOpenChange: setIsOpen,
-      placement: 'top'
+      placement: 'top',
+      middleware: [ flip() ],
    });
 
    const hover = useHover(context);
@@ -34,7 +36,7 @@ export default function ExternalLink(props: ExternalLinkProps) {
          >{props.children}</a>
          {isOpen && (
             <div
-               className="floating-div"
+               className="floating-div-external"
                ref={refs.setFloating} 
                style={floatingStyles} 
                {...getFloatingProps()}
