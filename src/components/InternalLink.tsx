@@ -5,7 +5,7 @@ import { getEntry } from 'astro:content';
 
 import '../styles/internal-link.scss';
 
-interface ExternalLinkProps {
+interface InternalLinkProps {
    link: string;
    type: 'essay' | 'thought' | 'media' | 'none';
    children: React.ReactNode;
@@ -21,7 +21,7 @@ class EntryData {
    }
 }
 
-export default function ExternalLink(props: ExternalLinkProps) {
+export default function ExternalLink(props: InternalLinkProps) {
    
    const [ isOpen, setIsOpen ] = useState(false);
    const [ entryData, setEntryData ] = useState<EntryData>();
@@ -36,16 +36,18 @@ export default function ExternalLink(props: ExternalLinkProps) {
    const hover = useHover(context);
 
    useEffect(() => {
+      let link = props.link.split('/').reverse()[0];
+      
       if (props.type === 'essay') {
-         getEntry('essay', props.link).then(result => {
+         getEntry('essay', link).then(result => {
             setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
          })
       } else if (props.type === 'thought') {
-         getEntry('thought', props.link).then(result => {
+         getEntry('thought', link).then(result => {
             setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
          })
       } else if (props.type === 'media') {
-         getEntry('media', props.link).then(result => {
+         getEntry('media', link).then(result => {
             setEntryData(new EntryData(result?.data.name!, result?.data.brief!));
          })
       } else if (props.type === 'none') {

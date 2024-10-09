@@ -3,6 +3,7 @@ import '@fontsource/space-mono';
 import '@fontsource/poppins';
 import MainLayout from '../layouts/MainLayout.astro';
 import ExternalLink from '../components/ExternalLink';
+import InternalLink from '../components/InternalLink'
 ---
 
 <MainLayout>
@@ -10,7 +11,13 @@ import ExternalLink from '../components/ExternalLink';
       <div class="inner-item">
          <h1>Now</h1>
          <p>An idea I gathered from <ExternalLink client:visible link="https://maggieappleton.com/now">Maggie Appleton</ExternalLink>'s blog, that I like quite a lot</p>
-         <p>This page will continue to grow and grow as I add more and more to it. Each entry is dated and displays a path of things I've been interested in</p>
+         <p>This page will continue to grow and grow as I add more and more to it. Each entry is dated and displays a path of things I've been interested in.</p>
+      </div>
+      <div class="inner-item">
+         <h2>October 9th, 2024</h2>
+         <p>
+            It's been over a month now since I started college. Although I knew it would be different, I didn't think that it would be as different as it is. It's mostly the same in that I still get up every day and go to class, but now I have so much control over my own decisions. Everyday I wake up and I can approach things however I want and <InternalLink client:visible link="/garden/thoughts/shades-of-perfect-blue" type="thought">that feeling</InternalLink> is incredible. While I've always felt happy, it feels as though I wake up each day with more joy than I ever have before. I'm glad to be where I'm at and I'm excited to see what will come.
+         </p>
       </div>
       <div class="inner-item">
          <h2>July 28th, 2024</h2>

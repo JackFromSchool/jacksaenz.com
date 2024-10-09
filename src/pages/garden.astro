@@ -6,9 +6,43 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 import { getCollection } from 'astro:content';
 
-const essays = await getCollection('essay');
+const essay = await getCollection('essay');
 const media = await getCollection('media');
 const thought = await getCollection('thought');
+
+class Link {
+   title: string;
+   date: Date;
+   slug: string;
+   type: string
+
+   constructor(title: string, date: Date, slug: string, type: string) {
+      this.title = title;
+      this.date = date;
+      this.slug = slug;
+      this.type = type;
+   }
+}
+
+let links: Link[] = [];
+
+thought.forEach((item) => {
+   let link = new Link(item.data.title, item.data.date, item.slug, "Thought");
+   links.push(link);
+});
+
+essay.forEach((item) => {
+   let link = new Link(item.data.title, item.data.date, item.slug, "Essay");
+   links.push(link);
+});
+
+media.forEach((item) => {
+   let link = new Link(item.data.name, item.data.date, item.slug, "Media");
+   links.push(link);
+});
+
+links.sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
 ---
 
 <MainLayout>
@@ -21,19 +55,9 @@ const thought = await getCollection('thought');
       </div>
    </div>
    <div class="grid-container">
-      <!--
-      {essays.map((item) => 
-         <GardenLink title={item.data.title} href={"essays/"+item.slug} type="Essay"/>
+      {links.map((item) => 
+         <GardenLink title={item.title} href={"thoughts/"+item.slug} type={item.type}/>
       )}
-      -->
-      {thought.map((item) => 
-         <GardenLink title={item.data.title} href={"thoughts/"+item.slug} type="Thought"/>
-      )}
-      <!--
-      {media.map((item) => 
-         <GardenLink title={item.data.title} href={item.slug} type="Media"/>
-      )}
-      -->
    </div>
 </MainLayout>
 
