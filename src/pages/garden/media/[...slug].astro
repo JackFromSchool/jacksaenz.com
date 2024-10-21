@@ -16,5 +16,7 @@ if (entry === undefined) {
 const { Content } = await entry.render();
 ---
 
-<h1>{entry.data.name}</h1>
+<ContentLayout title={entry.data.name}>
 <Content />
+</ContentLayout>
+

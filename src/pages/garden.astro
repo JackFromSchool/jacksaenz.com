@@ -27,17 +27,17 @@ class Link {
 let links: Link[] = [];
 
 thought.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, item.slug, "Thought");
+   let link = new Link(item.data.title, item.data.date, "thoughts/"+item.slug, "Thought");
    links.push(link);
 });
 
 essay.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, item.slug, "Essay");
+   let link = new Link(item.data.title, item.data.date, "essays/"+item.slug, "Essay");
    links.push(link);
 });
 
 media.forEach((item) => {
-   let link = new Link(item.data.name, item.data.date, item.slug, "Media");
+   let link = new Link(item.data.name, item.data.date, "media/"+item.slug, "Media");
    links.push(link);
 });
 
@@ -56,7 +56,7 @@ links.sort((a, b) => b.date.valueOf() - a.date.valueOf());
    </div>
    <div class="grid-container">
       {links.map((item) => 
-         <GardenLink title={item.title} href={"thoughts/"+item.slug} type={item.type}/>
+         <GardenLink title={item.title} href={item.slug} type={item.type}/>
       )}
    </div>
 </MainLayout>
