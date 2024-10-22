@@ -10,7 +10,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/js.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Jack Saenz</title>
+		<title>{ title }</title>
 	</head>
    <body>
       <Navbar/>
@@ -90,8 +90,12 @@ const { title } = Astro.props;
       img {
          max-width: 100%;
          height: auto;
+         max-height: 600px;
+         width: auto;
          margin-top: 2rem;
          display: block;
+         margin-left: auto;
+         margin-right: auto;
       }
 
       .title {
