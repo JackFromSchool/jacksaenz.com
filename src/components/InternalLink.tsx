@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useFloating, useHover, useInteractions } from '@floating-ui/react';
 import { flip } from '@floating-ui/dom';
-import { actions } from 'astro:actions';
 
 import '../styles/internal-link.scss';
 
@@ -35,26 +34,6 @@ export default function ExternalLink(props: InternalLinkProps) {
 
    const hover = useHover(context);
 
-   useEffect(() => {
-      let link = props.link.split('/').reverse()[0];
-      
-      if (props.type === 'essay') {
-         actions.getEntry({type: 'essay', link: link}).then(result => {
-            setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
-         })
-      } else if (props.type === 'thought') {
-         actions.getEntry({type: 'thought', link: link}).then(result => {
-            setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
-         })
-      } else if (props.type === 'media') {
-         actions.getEntry({type: 'media', link: link}).then(result => {
-            setEntryData(new EntryData(result?.data.name!, result?.data.brief!));
-         })
-      } else if (props.type === 'none') {
-         setEntryData(new EntryData("Not Yet Made", "This article doesn't exist yet, but it might soon! I just linked to it becuase I intend to write about it eventually."))
-      }
-   });
-
    const { getReferenceProps, getFloatingProps } = useInteractions([
       hover,
    ]);
@@ -75,10 +54,9 @@ export default function ExternalLink(props: InternalLinkProps) {
                {...getFloatingProps()}
             >
                <h1>
-                  {entryData?.title}
+                  I'll fix this later
                </h1>
                <p>
-                  {entryData?.brief}
                </p>
             </div>
          )}
