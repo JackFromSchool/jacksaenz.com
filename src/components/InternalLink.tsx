@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFloating, useHover, useInteractions } from '@floating-ui/react';
-import {flip} from '@floating-ui/dom';
-import { getEntry } from 'astro:content';
+import { flip } from '@floating-ui/dom';
+import { actions } from 'astro:actions';
 
 import '../styles/internal-link.scss';
 
@@ -39,15 +39,15 @@ export default function ExternalLink(props: InternalLinkProps) {
       let link = props.link.split('/').reverse()[0];
       
       if (props.type === 'essay') {
-         getEntry('essay', link).then(result => {
+         actions.getEntry({type: 'essay', link: link}).then(result => {
             setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
          })
       } else if (props.type === 'thought') {
-         getEntry('thought', link).then(result => {
+         actions.getEntry({type: 'thought', link: link}).then(result => {
             setEntryData(new EntryData(result?.data.title!, result?.data.brief!));
          })
       } else if (props.type === 'media') {
-         getEntry('media', link).then(result => {
+         actions.getEntry({type: 'media', link: link}).then(result => {
             setEntryData(new EntryData(result?.data.name!, result?.data.brief!));
          })
       } else if (props.type === 'none') {

@@ -1,7 +1,9 @@
 import { z, defineCollection } from 'astro:content';
 
+import { glob } from 'astro/loaders';
+
 const thoughtCollection = defineCollection({
-   type: 'content',
+   loader: glob({ pattern: "*.mdx", base: "./src/content/thought/"}),
    schema: z.object({
       title: z.string(),
       brief: z.string(),
@@ -10,7 +12,7 @@ const thoughtCollection = defineCollection({
 });
 
 const mediaCollection = defineCollection({
-   type: 'content',
+   loader: glob({ pattern: "*.mdx", base: "./src/content/media"}),
    schema: z.object({
       name: z.string(),
       type: z.enum(["music", "film", "literature", "art", "etc"]),
@@ -20,7 +22,7 @@ const mediaCollection = defineCollection({
 });
 
 const essayCollection = defineCollection({
-   type: 'content',
+   loader: glob({ pattern: "*.mdx", base: "./src/content/essay" }),
    schema: z.object({
       title: z.string(),
       brief: z.string(),

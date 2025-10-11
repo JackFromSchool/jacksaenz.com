@@ -27,17 +27,17 @@ class Link {
 let links: Link[] = [];
 
 thought.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, "thoughts/"+item.slug, "Thought");
+   let link = new Link(item.data.title, item.data.date, "thoughts/"+item.id, "Thought");
    links.push(link);
 });
 
 essay.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, "essays/"+item.slug, "Essay");
+   let link = new Link(item.data.title, item.data.date, "essays/"+item.id, "Essay");
    links.push(link);
 });
 
 media.forEach((item) => {
-   let link = new Link(item.data.name, item.data.date, "media/"+item.slug, "Media");
+   let link = new Link(item.data.name, item.data.date, "media/"+item.id, "Media");
    links.push(link);
 });
 
