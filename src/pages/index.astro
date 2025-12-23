@@ -5,7 +5,17 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout>
    <h1>Hey I'm <span class="jack">Jack</span>!</h1>
-   <p>I like to write about what I'm doing sometimes.<br>This is the onestop shop for everything I'm up to.</p>
+   <p class="subtitle">Welcome to my little corner of the internet!</p>
+   <!--
+   <div class="sitemap">
+      <h2>Explore the <a href="garden">Garden</a>,</h2>
+      <p>A collection of essays, projects, and general blogging.</p>
+      <h2>See what I'm up to <a href="now">Now</a>,</h2>
+      <p>An ever expanding page, charting what I've been working on.</p>
+      <h2>See what I'm <a href="about">About</a>,</h2>
+      <p>Learn about me!</p>
+   </div>
+   --!>
 </MainLayout>
 
 <style lang="scss">
@@ -32,15 +42,42 @@ import MainLayout from '../layouts/MainLayout.astro';
       padding-right: 4rem;
    }
 
+   h2 {
+      font-family: 'montserrat', sans-serif;
+      font-weight: normal;
+      font-size: max(2vw, 1rem);
+      margin-bottom: .5rem;
+      margin-top: 0;
+      margin-left: 1rem;
+      color: $text;
+   }
+
+   a {
+      color: $accent;
+   }
+
    p {
       font-family: 'roboto', sans-serif;
-      font-size: max(2vw, 1rem);
+      font-size: max(1vw, 1rem);
+      margin-top: 0;
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+   }
+
+   .subtitle {
+      font-family: 'roboto', sans-serif;
+      font-size: max(1.5vw, 1rem);
       margin-left: 1rem;
       margin-right: 2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
    }
 
    .jack {
       color: $accent;
+   }
+
+   .sitemap {
    }
 
 </style>

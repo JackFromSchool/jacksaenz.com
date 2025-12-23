@@ -1,0 +1,114 @@
+---
+title: "ECE 319: Battleship"
+---
+
+This project was exciting, not only because it was a culmination of a really exciting semester, but also because it was my first time collaborating on an embedded systems project. With that, there was some growing pains figuring out how to structure the project in such a way that would allow for my partner and I to work together without stepping on each other's toes to much. With that being said, I'm really happy with how things ended up turning out, and I found that I was able to come up with a pretty good system structure.
+
+## The Loop
+
+To start I'd like to address my favorite part of this project, and that is the event loop system that handles the various button interactions and game state changes that occur throught our game of battleship. To illustrate just how much my partner and I liked this idea, here's a picture of what our brainstorming whiteboard looked like after about two hours in the engineering building:
+
+>> Picture of whiteboard
+
+The core of our event loop works by breaking down every interaction with our system into an event. For us that meant breaking down each of the four buttons into pressed and unpressed events, the joystick into a stationary event and an event for 8 directions, and lastly breaking our slide potentiometer into 6 distinct positions that report any changes. Our loop then effectively looks like this:
+
+```c
+int main() {
+    // Initializations
+    enum Event current_event;
+
+    while(true) {
+        current_event = eventQueue.poll(); // Blocks until event
+        handle_event(current_event);
+    }
+}
+```
+
+There is one key problem with this event loop structure, that being that it
+halts all processing while the system waits for an event to make it go back to
+work again. However, this works out pretty well for our simple battleship game,
+since the board game doesn't need to do anything else while it waits for events
+to come in. Things like audio and polling for button, adc changes, etc. are all
+handled by seperate timers that run independently form the main thread of
+execution. 
+
+While for many other projects, actively blocking in the main thread
+would likely be a huge drawback, here it works quite well. Additionally, when it
+comes to debugging, this sort of framework could easily have automatic tests
+added that simply pipe in fake inputs. In fact, a lot of our testing involved
+piping in inputs and stepping through our code to see what each input
+accomplished. Because you can see what each individual input does, you can
+easily find where bugs occur. I love this framework, not because it's the end
+all be all, but because it's highly effective for use case.
+
+One other benefit to this framework was that it also made it very easy to hook
+up all our inputs to one central system. My partner and I simply came together
+to define all of our input events, and then we each went to work on the two main
+input systems—I worked on the ADC components, and my partner on the buttons. It
+was easy to test each of our systems separately and when we came together
+everything just worked!
+
+## The Game States
+
+The next major architecture of our battleship game was figuring out how to
+split up the natural progression of the game into a set of states. We ended up
+with this list of states we needed to include:
+
+- Menu
+- Character Select
+- Ship Placement
+- Active Game
+- Sudden Death
+- Game Over
+
+By breaking up the progression of a playthrough of our game into a distinct set
+of states we not only make splitting up our work much simpler, but we also make
+defining the actual state itself much easier. In embedded systems it's basically
+a requirement to break one of the cardinal rules of programming, creating global
+state. However, by breaking up state into various files and making them only
+visible to those files (yes static variables), you can make your job a lot
+easier and less confusing. We ended up separating each of these game states into
+their own file, splitting up our work and allowing us to easily manage our own
+state.
+
+All that being said, we did have to define some global state for things like
+settings, the battleship boards themselves, and the position of ships. This was
+one of those things we worked on together during our initial brainstorming and
+used throughout the project. If I had to say I learned one thing from this
+project it's definitely the importance of planning. Usually in group projects we
+try coming up with a big plan for how the project should be structured and we
+have to walk it back later on, however in this project, we took our time and
+things worked out the whole time.
+
+Lastly, I should mention that we never did end up adding character selection, or
+a sudden death mode; we simply just ran out of time. However due to the way our
+project was structured, it would be super easy to add either of those states. In
+code we ended up with something like this, built upon the loop from earlier:
+
+```c
+int main() {
+    // Initializations
+    enum GameState current_game_state;
+    while(true) {
+        current_event = eventQueue.poll(); // Blocks until event
+        enum GameState next_state;
+        switch(current_game_state) {
+            case MENU:
+                next_state = menu_handler(current_event);
+                break;
+            case SHIP_PLACEMENT:
+                next_state = ship_placement_handler(current_event);
+                break;
+            case GAME_OVER:
+                next_state = game_over_handler(current_event);
+                break;
+        }
+    }
+}
+```
+
+As you can see, all we need to do add another game state is simply add another
+handler (and some more initalization, but that stuff is trivial) and we have
+another game state. One day I might come back to this project and add on to it
+with characters or sudden death, and the amazing this is, I'm not at all scared
+that it'll take me tearing the whole thing apart to get it done!

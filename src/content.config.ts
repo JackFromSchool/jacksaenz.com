@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection, reference } from 'astro:content';
 
 import { glob } from 'astro/loaders';
 
@@ -30,8 +30,26 @@ const essayCollection = defineCollection({
    })
 });
 
+const projectCollection = defineCollection({
+   loader: glob({ pattern: "*.mdx", base: "./src/content/project"}),
+   schema: z.object({
+      writeup: reference('writeup'),
+      title: z.string(),
+      date: z.date(),
+   })
+})
+
+const writeupCollection = defineCollection({
+   loader: glob({ pattern: "*.mdx", base: "./src/content/writeup" }),
+   schema: z.object({
+      title: z.string(),
+   })
+})
+
 export const collections = {
    'thought': thoughtCollection,
    'media': mediaCollection,
    'essay': essayCollection,
+   'project': projectCollection,
+   'writeup': writeupCollection,
 };

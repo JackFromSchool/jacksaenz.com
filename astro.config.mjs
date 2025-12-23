@@ -8,5 +8,14 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [react(), mdx()],
   output: "static",
-  adapter: vercel()
+  adapter: vercel(),
+   markdown: {
+      shikiConfig: {
+         theme: 'everforest-dark',
+      },
+   },
+   image: {
+      responsiveStyles: true,
+      layout: 'constrained',
+   }
 });

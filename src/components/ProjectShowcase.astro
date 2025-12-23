@@ -1,0 +1,61 @@
+---
+import '@fontsource/roboto';
+import '@fontsource/montserrat';
+
+interface Props {
+   title: string;
+   link: string;
+}
+
+const { title, link } = Astro.props;
+---
+
+<div class="full-page">
+   <div class="side-by-side">
+      <div class="left-page">
+         <slot name="images"/>
+      </div>
+      <div class="right-page">
+         <slot/>
+      </div>
+   </div>
+</div>
+
+<style is:global >
+.full-page {
+   display: block;
+}
+
+.side-by-side {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+.left-page {
+   padding-right: 1rem;
+}
+
+.right-page {
+   padding-left: 1rem;
+}
+
+p {
+   font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (max-width: 1000px) {
+
+   .side-by-side {
+      grid-template-columns: 1fr;
+   }
+
+.left-page {
+      padding-right: 0;
+}
+
+.right-page {
+      padding-left: 0;
+}
+
+}
+</style>

@@ -3,46 +3,19 @@ import '@fontsource/poppins';
 import '@fontsource/space-mono';
 import GardenLink from "../components/GardenLink.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import GardenProjectLink from "../components/GardenProjectLink.astro";
 
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 const essay = await getCollection('essay');
 const media = await getCollection('media');
 const thought = await getCollection('thought');
+const project = await getCollection('project');
 
-class Link {
-   title: string;
-   date: Date;
-   slug: string;
-   type: string
+const allEntries = [...essay, ...media, ...thought, ...project];
 
-   constructor(title: string, date: Date, slug: string, type: string) {
-      this.title = title;
-      this.date = date;
-      this.slug = slug;
-      this.type = type;
-   }
-}
-
-let links: Link[] = [];
-
-thought.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, "thoughts/"+item.id, "Thought");
-   links.push(link);
-});
-
-essay.forEach((item) => {
-   let link = new Link(item.data.title, item.data.date, "essays/"+item.id, "Essay");
-   links.push(link);
-});
-
-media.forEach((item) => {
-   let link = new Link(item.data.name, item.data.date, "media/"+item.id, "Media");
-   links.push(link);
-});
-
-links.sort((a, b) => b.date.valueOf() - a.date.valueOf());
-
+allEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <MainLayout>
@@ -54,9 +27,12 @@ links.sort((a, b) => b.date.valueOf() - a.date.valueOf());
          </p>
       </div>
    </div>
+
    <div class="grid-container">
-      {links.map((item) => 
-         <GardenLink title={item.title} href={item.slug} type={item.type}/>
+      {allEntries.map((item) => item.collection != "project" ? 
+      <GardenLink title={item.data.title || item.data.name} href={item.collection + "/" + item.id} type={item.collection}/>
+      :
+      <GardenProjectLink project={item} />
       )}
    </div>
 </MainLayout>
@@ -100,8 +76,10 @@ links.sort((a, b) => b.date.valueOf() - a.date.valueOf());
       row-gap: 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-auto-rows: fit-content(1em);
+grid-auto-rows: fit-content(1em);
+      margin-bottom: 2rem;
    }
+
 
    @media only screen and (max-width: 1200px) {
       .grid-container {

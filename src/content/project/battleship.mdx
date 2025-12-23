@@ -1,0 +1,24 @@
+---
+title: "ECE 319: Battleship"
+writeup: battleship
+date: 2025-05-01
+---
+
+import ProjectShowcase from '../../components/ProjectShowcase.astro';
+import { Image } from "astro:assets";
+import overviewImage from '../../assets/projects/battleship/overview.avif';
+
+
+<ProjectShowcase>
+   <Fragment slot="images">
+      <Image src={overviewImage} alt="Battleship Project PCB, showing the screen controls and components." class="image"/>
+   </Fragment>
+   This was my partner and I's final project for ECE 319H: Introduction to Embedded Systems Honors. It is a fully working recreation of the game battleship that was made using the MSPM0G350x series of microcontrollers.
+
+   Key Skills
+   * Learned how to interact with a microcontroller ecosystem; reading datasheets, understanding conventions.
+   * Gained experience with using interrupts and atomic operations.
+   * Build a robust event loop that matched the specific requirements for this project.
+   * Gained experience in the principles of PCB design and circuit theory.
+</ProjectShowcase>
+
