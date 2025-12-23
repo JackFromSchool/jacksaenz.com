@@ -1,5 +1,10 @@
 ---
+import type { MarkdownHeading } from 'astro';
+
 const { headings } = Astro.props;
+interface Props {
+   headings: MarkdownHeading[]
+}
 const filteredHeadings = headings.filter(h => h.depth <= 2);
 ---
 
@@ -16,6 +21,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 2);
 
 <style lang="scss">
    @use '../styles/_main-colors' as *;
+   @use 'sass:color';
 
    .contents {
       margin: 0;
@@ -34,6 +40,6 @@ const filteredHeadings = headings.filter(h => h.depth <= 2);
       padding: 0.5rem;
       margin-bottom: 1rem;
       margin-top: 1rem;
-      background-color: darken($base, 3%);
+      background-color: color.adjust($base, $lightness: -3%);
    }
 </style>

@@ -30,7 +30,7 @@ allEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
    <div class="grid-container">
       {allEntries.map((item) => item.collection != "project" ? 
-      <GardenLink title={item.data.title || item.data.name} href={item.collection + "/" + item.id} type={item.collection}/>
+      <GardenLink title={(item.data as any).title || (item.data as any).name} href={item.collection + "/" + item.id} type={item.collection}/>
       :
       <GardenProjectLink project={item} />
       )}
