@@ -1,6 +1,7 @@
 ---
 import '@fontsource/space-mono';
 import '@fontsource/roboto';
+import '@fontsource/eb-garamond'
 import Navbar from '../components/Navbar.astro';
 const { title } = Astro.props;
 ---
@@ -121,6 +122,30 @@ const { title } = Astro.props;
          display: block;
          margin-left: auto;
          margin-right: auto;
+      }
+
+      iframe {
+         max-width: 100%;
+         max-height: 600px;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+         margin-bottom: 2rem;
+         margin-top: 2rem;
+      }
+
+      @media screen and (max-width: 500px) {
+         iframe {
+            max-width: 100%;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+         margin-bottom: 2rem;
+         margin-top: 2rem;
+         }
       }
 
       .title {

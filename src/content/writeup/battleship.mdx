@@ -2,15 +2,31 @@
 title: "ECE 319: Battleship"
 ---
 
-This project was exciting, not only because it was a culmination of a really exciting semester, but also because it was my first time collaborating on an embedded systems project. With that, there was some growing pains figuring out how to structure the project in such a way that would allow for my partner and I to work together without stepping on each other's toes to much. With that being said, I'm really happy with how things ended up turning out, and I found that I was able to come up with a pretty good system structure.
+This was the final project for my Introduction to Embedded Systems course at UT
+Austin. It was amazing getting to apply all of my newly gathered knowledge to
+create something that was entirely my own. Additionally, this project was a
+great chance to gain experience working with someone else on an embedded
+project; each step of the design and creation was built around being modular to
+accommodate collaboration. I ended up creating a project structure that I'm
+really proud of and the final game came together pretty seamlessly because of
+it.
 
 ## The Loop
 
-To start I'd like to address my favorite part of this project, and that is the event loop system that handles the various button interactions and game state changes that occur throught our game of battleship. To illustrate just how much my partner and I liked this idea, here's a picture of what our brainstorming whiteboard looked like after about two hours in the engineering building:
+To start I'd like to address my favorite part of this project, and that is the
+event loop system that handles the various button interactions and game state
+changes that occur throughout our game of battleship. To illustrate just how much
+my partner and I liked this idea, here's a picture of what our brainstorming
+whiteboard looked like after about two hours in the engineering building:
 
 >> Picture of whiteboard
 
-The core of our event loop works by breaking down every interaction with our system into an event. For us that meant breaking down each of the four buttons into pressed and unpressed events, the joystick into a stationary event and an event for 8 directions, and lastly breaking our slide potentiometer into 6 distinct positions that report any changes. Our loop then effectively looks like this:
+The core of our event loop works by breaking down every interaction with our
+system into an event. For us that meant breaking down each of the four buttons
+into pressed and unpressed events, the joystick into a stationary event and an
+event for 8 directions, and lastly breaking our slide potentiometer into 6
+distinct positions that report any changes. Our loop then effectively looks like
+this:
 
 ```c
 int main() {
@@ -28,8 +44,8 @@ There is one key problem with this event loop structure, that being that it
 halts all processing while the system waits for an event to make it go back to
 work again. However, this works out pretty well for our simple battleship game,
 since the board game doesn't need to do anything else while it waits for events
-to come in. Things like audio and polling for button, adc changes, etc. are all
-handled by seperate timers that run independently form the main thread of
+to come in. Things like audio and polling for button, ADC changes, etc. are all
+handled by separate timers that run independently form the main thread of
 execution. 
 
 While for many other projects, actively blocking in the main thread
@@ -108,7 +124,22 @@ int main() {
 ```
 
 As you can see, all we need to do add another game state is simply add another
-handler (and some more initalization, but that stuff is trivial) and we have
+handler (and some more initialization, but that part is trivial) and we have
 another game state. One day I might come back to this project and add on to it
 with characters or sudden death, and the amazing this is, I'm not at all scared
 that it'll take me tearing the whole thing apart to get it done!
+
+## Final Thoughts
+
+All in all, I'm really happy with how this project turned out. While a lot of
+the initial setup was somewhat involved, once we had our hardware drivers all up
+and running, the rest of the project was super fun. There was plenty of
+interesting problems to solve and designing the game was super fun. I ended up
+making the systems for making a shot, and passing the game between both players,
+as well as the underlying audio system. Besides audio taking much longer than
+I'd like to admit, due to one of my source files getting linked to a source file
+with an identical name (I love C build systems!), everything went pretty smoothly!
+
+Below you can see a video of me showing off the game in action:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w01aQpL5I24?si=6fLC95k8Bb4z4f6r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

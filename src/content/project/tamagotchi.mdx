@@ -1,0 +1,32 @@
+---
+title: "Tamagotchi [in progress]"
+writeup: tamagotchi
+date: 2025-12-26
+---
+
+import ProjectShowcase from '../../components/ProjectShowcase.astro';
+import { Image } from "astro:assets";
+import overviewImage from
+'../../assets/projects/tamagotchi/tamagotchi_overview.avif';
+
+<ProjectShowcase>
+    <Fragment slot="images">
+        <Image src={overviewImage} alt="Breadboard with a microcontroller hooked
+up to a set of 3 buttons and a small screen. On the screen is a set of icons and
+a small digital creature." class="image" />
+    </Fragment>
+
+A personal project where I've been designing my own embedded system from the
+ground up! From picking out each component, to writing all of the hardware
+drivers, and higher level software that governs the virtual pet game. Right now
+the plan is to recreate the original Tamagotchi game and then add my own twists
+later.
+
+Project Checklist:
+- [x] Pick out hardware components.
+- [x] Create hardware drivers.
+- [x] Create Sprites and complete game design.
+- [ ] Design and order a custom PCB.
+- [ ] Finish game design systems.
+- [ ] Make an enclosure and finalize the system.
+</ProjectShowcase>

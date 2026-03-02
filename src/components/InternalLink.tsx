@@ -53,10 +53,8 @@ export default function ExternalLink(props: InternalLinkProps) {
                style={floatingStyles} 
                {...getFloatingProps()}
             >
-               <h1>
-                  I'll fix this later
-               </h1>
                <p>
+                  {props.link}
                </p>
             </div>
          )}
