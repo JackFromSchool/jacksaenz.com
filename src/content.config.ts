@@ -46,10 +46,20 @@ const writeupCollection = defineCollection({
    })
 })
 
+const fictionCollection = defineCollection({
+   loader: glob({ pattern: "*.md", base: "./src/content/fiction" }),
+   schema: z.object({
+      title: z.string(),
+      brief: z.string(),
+      date: z.date(),
+   })
+})
+
 export const collections = {
    'thought': thoughtCollection,
    'media': mediaCollection,
    'essay': essayCollection,
+   'fiction': fictionCollection,
    'project': projectCollection,
    'writeup': writeupCollection,
 };

@@ -12,8 +12,9 @@ const essay = await getCollection('essay');
 const media = await getCollection('media');
 const thought = await getCollection('thought');
 const project = await getCollection('project');
+const fiction = await getCollection('fiction');
 
-const allEntries = [...essay, ...media, ...thought, ...project];
+const allEntries = [...essay, ...media, ...thought, ...project, ...fiction];
 
 allEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
