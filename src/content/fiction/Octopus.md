@@ -7,8 +7,8 @@ date: 2026-03-08
 # The Octopus
 
 Off in the distant sea, an octopus had begun to levitate. Out of the rough, all
-eight tentacles were pulled one by one. As though it had been transformed into a
-marionette, each tentacle looked as if it was being held up by a string. Oddly
+eight tentacles were pulled one by one; as though it had been transformed into a
+marionette. Oddly
 enough, the octopus didn't seem to mind the intrusion. It swayed with a calm
 sense of nonchalance, as though the wind and the strings were it's only driving
 influence. Each string pulled at a rate out of sync from one another, leaving
@@ -17,7 +17,7 @@ moment, this display seemed beautiful, but in another moment the octopus would
 be jettisoned into the skyward blue.
 
 James noticed the intrusion just as the octopus had reached the midpoint of sky
-and sea. From the lighthouse, he was gifted the perfect view for experience the
+and sea. From the lighthouse, he was gifted the perfect view for experiencing the
 once in a lifetime performance. Along the coast, the sound of surf crashing
 against smoothened rocks offered up an oddly calming ambience to the
 otherworldly play. As James sat up from the bench nestled next to the
