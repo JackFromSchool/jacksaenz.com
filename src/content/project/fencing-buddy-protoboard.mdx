@@ -1,0 +1,29 @@
+---
+title: "Fencing Buddy: Protoboard"
+writeup: fencing-buddy-protoboard 
+date: 2026-04-01
+---
+
+import ProjectShowcase from '../../components/ProjectShowcase.astro';
+import { Image } from "astro:assets";
+import overviewImage from
+'../../assets/projects/fencing_buddy_protoboard/overview.avif';
+
+<ProjectShowcase>
+    <Fragment slot="images">
+        <Image src={overviewImage} alt="Image of a mostly assembled PCB. There is a longhorn design lab flask on the silkscreen along with the text Fencing Buddy Protoboard v0.1" class="image" />
+    </Fragment>
+
+This was project for Longhorn Design Lab! While it was done with a team, I lead
+most of the PCB design work, since I had the most prior experience working with
+PCB's. It was really exciting getting to make something this complex, and
+getting experience working on a board that had to meet specifications from our
+team's mechanical engineer. Additionally, we got this board assembled, so I
+gained a lot of experience designing specifically for that use case.
+
+Key Skills
+* Gained experience designing a PCB intended for assembly.
+* Learned how to design around the physical constraints of an enclosure.
+* Designed a circuit to allow for battery and USB power delivery.
+
+</ProjectShowcase>

@@ -1,0 +1,58 @@
+---
+import '@fontsource/poppins';
+import '@fontsource/space-mono';
+
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+   project: CollectionEntry<'project'>;
+}
+
+const { project } = Astro.props;
+
+const { Content } = await render(project);
+---
+
+<div class="container">
+   <h1>{project.data.title}</h1>
+   <Content />
+   <a href={"garden/project/" + project.data.writeup.id}>Read More...</a>
+</div>
+
+<style lang="scss">
+   @use '../styles/_main-colors' as *;
+
+   h1 {
+      color: $primary;
+      font-family: 'montserrat', sans-serif;
+      margin-right: .6rem;
+      margin-top: .6rem;
+      margin-bottom: 1rem;
+   }
+
+   p {
+      color: $text;
+      font-family: 'roboto', sans-serif;
+      margin-left: .6rem;
+      margin-right: .6rem;
+      margin-bottom: .6rem;
+      margin-top: 0;
+   }
+
+   .container {
+      grid-column: 1 / -1;
+      transition: background .2s ease-in-out;
+      border: solid;
+      border-radius: 2px;
+      border-color: $secondary;
+border-radius: 15px;
+padding: 1rem;
+}
+
+   a {
+      padding-top: 1rem;
+      font-family: 'roboto', sans-serif;
+color: $accent;
+}
+
+</style>

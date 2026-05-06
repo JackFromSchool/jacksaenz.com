@@ -2,18 +2,46 @@
 import '@fontsource/space-mono';
 import '@fontsource/poppins';
 import MainLayout from '../layouts/MainLayout.astro';
+import AboutProjectLink from "../components/AboutProjectLink.astro";
+import { getCollection } from 'astro:content';
+import { Image } from "astro:assets";
+
+import headshot from '../assets/headshot.avif';
+
+const project = await getCollection('project');
+
+project.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <MainLayout>
    <div class="centered-container">
       <div class="inner-item">
          <h1>About</h1>
-         <p>
+         <p class="subtitle" >
             Majoring in Electrical and Computer Engineering at UT Austin.
          </p>
-         <p>
-            I love tech and I love writing, so I built this blog to act as a cross roads for both of those passions. I don't abide by any rules to what I write about so expect anything.
-         </p>
+         <div class="side-by-side">
+            <p>
+               Hey I'm Jack! Welcome to my little corner of the internet! Ever since I
+               was a kid I've always loved tinkering with computers an electronics. When
+               I took my first computer science class in highschool I instantly knew that
+               was what I wanted to do. I'm know studying Electrical and Computer Engineering
+               at the University of Texas at Austin, specifically in the Computer Arcitecture &
+               Embedded Systems Track. 
+               <br> <br>
+               When I'm not locked in at school, I'm always working on a project. Whether it
+               be more coding involved or more electronics based, I always enjoy building 
+               something new and learning more about the field I'm so passionate about. Here
+               is a collection of the projects I'm most proud of.
+            </p>
+            <Image src={headshot} alt="Headshot of myself."/>
+         </div>
+         <h2>Projects</h2>
+         {project.map((item) => 
+            <div class="spacing">
+               <AboutProjectLink project={item} />
+            </div>
+         )}
       </div>
    </div>
 </MainLayout>
@@ -42,12 +70,57 @@ import MainLayout from '../layouts/MainLayout.astro';
       padding-right: 4rem;
    }
 
+   h2 {
+      font-family: 'montserrat', sans-serif;
+      font-size: max(3vw, 2rem);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding-right: 4rem;
+
+   }
+
    p {
+      font-family: 'roboto', sans-serif;
+      font-size: 1.2rem;
+      max-width: 80rem;
+      margin-left: 1rem;
+      margin-right: 2rem;
+   }
+
+   .side-by-side {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+   }
+
+   .subtitle {
       font-family: 'roboto', sans-serif;
       font-size: max(1.5vw, 1rem);
       max-width: 80rem;
       margin-left: 1rem;
       margin-right: 2rem;
+   }
+
+   .spacing {
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+   }
+
+   @media only screen and (max-width: 900px) {
+      .side-by-side {
+         grid-template-columns: 1fr;
+         transform: rotate(180deg);
+      }
+
+      .side-by-side > * {
+         transform: rotate(180deg);
+      }
+
+      p {
+         font-size: 1rem;
+      }
    }
 
 </style>

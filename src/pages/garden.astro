@@ -33,7 +33,7 @@ allEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
       {allEntries.map((item) => item.collection != "project" ? 
       <GardenLink title={(item.data as any).title || (item.data as any).name} href={item.collection + "/" + item.id} type={item.collection}/>
       :
-      <GardenProjectLink project={item} />
+      <GardenProjectLink project={item}  />
       )}
    </div>
 </MainLayout>
